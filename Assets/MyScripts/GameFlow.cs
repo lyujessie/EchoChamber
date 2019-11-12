@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
+using System.IO;
 
 public class GameFlow : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class GameFlow : MonoBehaviour
     public float g = 1;
     public float b = 1;
 
+    // Content file loading
+    private string OpinionsFileName = "OpinionsData.json";
+
     // Use this for initialization
     void Start()
     {
@@ -26,6 +30,10 @@ public class GameFlow : MonoBehaviour
         lightFirst.color = new Color(r, g, b);
         lightSecond.color = new Color(r, g, b);
         lightThird.color = new Color(r, g, b);
+
+        // loading json content
+        TextAsset jsonTextFile = Resources.Load<TextAsset>("Text/OpinionsData");
+        Debug.Log("text" + jsonTextFile.text);
     }
 
     // Update is called once per frame
@@ -60,7 +68,7 @@ public class GameFlow : MonoBehaviour
                 lightThird.color = new Color(r, g, b);
             }
             else if (currentLevel > 3) {
-
+                // Transit to the Data Screen
             }
         }
     }
