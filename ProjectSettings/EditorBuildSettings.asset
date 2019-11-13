@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DETFirst.unity
     guid: 28b78d5f5ae01cb40a04a3ecd44954e6
+  - enabled: 0
+    path: Assets/Scenes/Dylan_Test.unity
+    guid: c061df5e8c624b0438d4704c5c70b281
+  - enabled: 0
+    path: Assets/Scenes/gaze_test.unity
+    guid: 9f9a40120059481418bab3d338ced793
+  - enabled: 1
+    path: Assets/Scenes/Master.unity
+    guid: 13712636ee4984b4d873cf8feb96af9f
   m_configObjects: {}

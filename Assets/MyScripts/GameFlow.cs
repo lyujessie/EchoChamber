@@ -5,13 +5,15 @@ using System.Collections.Generic;
 
 public class GameFlow : MonoBehaviour
 {
-    public float timeLeft = 60.0f; //set each level to be 60 seconds
+    public float timeLeft = 30.0f; //set each level to be 60 seconds
     public TMP_Text timer;
     public int currentLevel;
     public int currentscore;
     public Light lightFirst;
     public Light lightSecond;
     public Light lightThird;
+    public Light lightForth;
+    public Light lightFifth;
 
     // For lighting color
     public float r = 1;
@@ -23,6 +25,15 @@ public class GameFlow : MonoBehaviour
     public int blueScore;
 
     // Opinions content
+    public GameObject title;
+    public GameObject opinion_1;
+    public GameObject opinion_2;
+    public GameObject opinion_3;
+    public GameObject opinion_4;
+    public GameObject opinion_5;
+    public GameObject opinion_6;
+    public GameObject opinion_7;
+    public GameObject opinion_8;
     private string[] opinions1_3;
     private string[] opinions2_4;
     private string[] opinions2_2;
@@ -47,6 +58,8 @@ public class GameFlow : MonoBehaviour
         lightFirst.color = new Color(r, g, b);
         lightSecond.color = new Color(r, g, b);
         lightThird.color = new Color(r, g, b);
+        lightForth.color = new Color(r, g, b);
+        lightFifth.color = new Color(r, g, b);
 
         // set up opinion score
         redScore = 0;
@@ -111,6 +124,22 @@ public class GameFlow : MonoBehaviour
         title3_5 = "How do we control guns without gun control? Make guns gay.";
         title3_3 = "A Pennsylvania judge struck down 3 gun control ordinances, including an assault weapons ban, enacted by the City of Pittsburgh after the mass shooting at the Tree of Life synagogue last year";
         title3_1 = "Facts: In the U.K, guns are highly regulated. It is illegal to carry a knife longer than three inches. Despite these restrictions, violent crimes have now surpassed that of New York City. Gun control ≠ less gun violence.";
+
+        // initialize the scene with 1-3 content
+        title.GetComponent<TMP_Text>().text = title1_3;
+        title.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level1-3-", 0));
+        opinion_1.GetComponent<TMP_Text>().text = opinions1_3[0];
+        opinion_1.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level1-3-", 1));
+        opinion_1.GetComponent<OpinionObject>().opinionSide = 1;
+        opinion_2.GetComponent<TMP_Text>().text = opinions1_3[1];
+        opinion_2.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level1-3-", 2));
+        opinion_2.GetComponent<OpinionObject>().opinionSide = 1;
+        opinion_3.GetComponent<TMP_Text>().text = opinions1_3[2];
+        opinion_3.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level1-3-", 3));
+        opinion_3.GetComponent<OpinionObject>().opinionSide = -1;
+        opinion_4.GetComponent<TMP_Text>().text = opinions1_3[3];
+        opinion_4.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level1-3-", 4));
+        opinion_4.GetComponent<OpinionObject>().opinionSide = -1;
     }
 
     // Update is called once per frame
@@ -124,13 +153,33 @@ public class GameFlow : MonoBehaviour
         if (timeLeft <= 0)
         {
             currentLevel++;
-            timeLeft = 60.0f;
 
             if (currentLevel == 2) {
+                timeLeft = 45.0f;
                 // Load content based on opinion scores
                 if (redScore > blueScore)
                 {
-                    // TODO: load level 2-4 content and dynamicallty instantiate objects
+                    // load level 2_4 content and dynamicallty instantiate objects
+                    title.GetComponent<TMP_Text>().text = title2_4;
+                    title.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-4-", 0));
+                    opinion_1.GetComponent<TMP_Text>().text = opinions2_4[0];
+                    opinion_1.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-4-", 1));
+                    opinion_1.GetComponent<OpinionObject>().opinionSide = 1;
+                    opinion_2.GetComponent<TMP_Text>().text = opinions2_4[1];
+                    opinion_2.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-4-", 2));
+                    opinion_2.GetComponent<OpinionObject>().opinionSide = 1;
+                    opinion_3.GetComponent<TMP_Text>().text = opinions2_4[2];
+                    opinion_3.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-4-", 3));
+                    opinion_3.GetComponent<OpinionObject>().opinionSide = 1;
+                    opinion_4.GetComponent<TMP_Text>().text = opinions2_4[3];
+                    opinion_4.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-4-", 4));
+                    opinion_4.GetComponent<OpinionObject>().opinionSide = 1;
+                    opinion_5.GetComponent<TMP_Text>().text = opinions2_4[4];
+                    opinion_5.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-4-", 5));
+                    opinion_5.GetComponent<OpinionObject>().opinionSide = -1;
+                    opinion_6.GetComponent<TMP_Text>().text = opinions2_4[5];
+                    opinion_6.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-4-", 6));
+                    opinion_6.GetComponent<OpinionObject>().opinionSide = -1;
 
                     // Change lighting
                     r = 1f;
@@ -140,7 +189,27 @@ public class GameFlow : MonoBehaviour
                     currentscore++;
                 } else if (blueScore >= redScore)
                 {
-                    // TODO: load level 2-4 content and dynamicallty instantiate objects
+                    // load level 2-2 content and dynamicallty instantiate objects
+                    title.GetComponent<TMP_Text>().text = title2_2;
+                    title.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-2-", 0));
+                    opinion_1.GetComponent<TMP_Text>().text = opinions2_2[0];
+                    opinion_1.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-2-", 1));
+                    opinion_1.GetComponent<OpinionObject>().opinionSide = 1;
+                    opinion_2.GetComponent<TMP_Text>().text = opinions2_2[1];
+                    opinion_2.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-2-", 2));
+                    opinion_2.GetComponent<OpinionObject>().opinionSide = -1;
+                    opinion_3.GetComponent<TMP_Text>().text = opinions2_2[2];
+                    opinion_3.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-2-", 3));
+                    opinion_3.GetComponent<OpinionObject>().opinionSide = -1;
+                    opinion_4.GetComponent<TMP_Text>().text = opinions2_2[3];
+                    opinion_4.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-2-", 4));
+                    opinion_4.GetComponent<OpinionObject>().opinionSide = -1;
+                    opinion_5.GetComponent<TMP_Text>().text = opinions2_2[4];
+                    opinion_5.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-2-", 5));
+                    opinion_5.GetComponent<OpinionObject>().opinionSide = -1;
+                    opinion_6.GetComponent<TMP_Text>().text = opinions2_2[5];
+                    opinion_6.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level2-2-", 6));
+                    opinion_6.GetComponent<OpinionObject>().opinionSide = -1;
 
                     // Change lighting
                     r = 0.75f;
@@ -154,14 +223,47 @@ public class GameFlow : MonoBehaviour
                 lightFirst.color = new Color(r, g, b);
                 lightSecond.color = new Color(r, g, b);
                 lightThird.color = new Color(r, g, b);
+                lightForth.color = new Color(r, g, b);
+                lightFifth.color = new Color(r, g, b);
+
+                // reset blueScore and redScore
+                redScore = 0;
+                blueScore = 0;
             }
             else if (currentLevel == 3) {
+                timeLeft = 60.0f;
+
                 if (currentscore == 4)
                 {
                     if (redScore > blueScore)
                     {
-                        // TODO: load level 3-5
-
+                        // load level 3-5
+                        title.GetComponent<TMP_Text>().text = title3_5;
+                        title.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-5-", 0));
+                        opinion_1.GetComponent<TMP_Text>().text = opinions3_5[0];
+                        opinion_1.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-5-", 1));
+                        opinion_1.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_2.GetComponent<TMP_Text>().text = opinions3_5[1];
+                        opinion_2.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-5-", 2));
+                        opinion_2.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_3.GetComponent<TMP_Text>().text = opinions3_5[2];
+                        opinion_3.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-5-", 3));
+                        opinion_3.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_4.GetComponent<TMP_Text>().text = opinions3_5[3];
+                        opinion_4.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-5-", 4));
+                        opinion_4.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_5.GetComponent<TMP_Text>().text = opinions3_5[4];
+                        opinion_5.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-5-", 5));
+                        opinion_5.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_6.GetComponent<TMP_Text>().text = opinions3_5[5];
+                        opinion_6.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-5-", 6));
+                        opinion_6.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_7.GetComponent<TMP_Text>().text = opinions3_5[6];
+                        opinion_7.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-5-", 7));
+                        opinion_7.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_8.GetComponent<TMP_Text>().text = opinions3_5[7];
+                        opinion_8.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-5-", 8));
+                        opinion_8.GetComponent<OpinionObject>().opinionSide = 1;
                         // change lighting
                         r = 1f;
                         g = 0.5f;
@@ -170,12 +272,38 @@ public class GameFlow : MonoBehaviour
                         currentscore++;
                     } else if (redScore <= blueScore)
                     {
-                        // TODO: load level 3-3
+                        // load level 3-3
+                        title.GetComponent<TMP_Text>().text = title3_3;
+                        title.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 0));
+                        opinion_1.GetComponent<TMP_Text>().text = opinions3_3[0];
+                        opinion_1.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 1));
+                        opinion_1.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_2.GetComponent<TMP_Text>().text = opinions3_3[1];
+                        opinion_2.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 2));
+                        opinion_2.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_3.GetComponent<TMP_Text>().text = opinions3_3[2];
+                        opinion_3.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 3));
+                        opinion_3.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_4.GetComponent<TMP_Text>().text = opinions3_3[3];
+                        opinion_4.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 4));
+                        opinion_4.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_5.GetComponent<TMP_Text>().text = opinions3_3[4];
+                        opinion_5.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 5));
+                        opinion_5.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_6.GetComponent<TMP_Text>().text = opinions3_3[5];
+                        opinion_6.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 6));
+                        opinion_6.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_7.GetComponent<TMP_Text>().text = opinions3_3[6];
+                        opinion_7.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 7));
+                        opinion_7.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_8.GetComponent<TMP_Text>().text = opinions3_3[7];
+                        opinion_8.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 8));
+                        opinion_8.GetComponent<OpinionObject>().opinionSide = -1;
 
                         // change lighting
-                        r = 1f;
-                        g = 1f;
-                        b = 1f;
+                        r = 0.75f;
+                        g = 0.5f;
+                        b = 0.75f;
 
                         currentscore--; 
                     }
@@ -183,17 +311,69 @@ public class GameFlow : MonoBehaviour
                 {
                     if (redScore > blueScore)
                     {
-                        // TODO: load level 3-3
+                        // load level 3-3
+                        title.GetComponent<TMP_Text>().text = title3_3;
+                        title.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 0));
+                        opinion_1.GetComponent<TMP_Text>().text = opinions3_3[0];
+                        opinion_1.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 1));
+                        opinion_1.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_2.GetComponent<TMP_Text>().text = opinions3_3[1];
+                        opinion_2.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 2));
+                        opinion_2.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_3.GetComponent<TMP_Text>().text = opinions3_3[2];
+                        opinion_3.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 3));
+                        opinion_3.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_4.GetComponent<TMP_Text>().text = opinions3_3[3];
+                        opinion_4.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 4));
+                        opinion_4.GetComponent<OpinionObject>().opinionSide = 1;
+                        opinion_5.GetComponent<TMP_Text>().text = opinions3_3[4];
+                        opinion_5.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 5));
+                        opinion_5.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_6.GetComponent<TMP_Text>().text = opinions3_3[5];
+                        opinion_6.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 6));
+                        opinion_6.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_7.GetComponent<TMP_Text>().text = opinions3_3[6];
+                        opinion_7.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 7));
+                        opinion_7.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_8.GetComponent<TMP_Text>().text = opinions3_3[7];
+                        opinion_8.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-3-", 8));
+                        opinion_8.GetComponent<OpinionObject>().opinionSide = -1;
 
                         // change lighting
-                        r = 1f;
-                        g = 1f;
-                        b = 1f;
+                        r = 0.75f;
+                        g = 0.5f;
+                        b = 0.75f;
 
                         currentscore++;
                     } else if (redScore <= blueScore)
                     {
-                        // TODO: load level 3-1
+                        // load level 3-1
+                        title.GetComponent<TMP_Text>().text = title3_1;
+                        title.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-1-", 0));
+                        opinion_1.GetComponent<TMP_Text>().text = opinions3_1[0];
+                        opinion_1.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-1-", 1));
+                        opinion_1.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_2.GetComponent<TMP_Text>().text = opinions3_1[1];
+                        opinion_2.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-1-", 2));
+                        opinion_2.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_3.GetComponent<TMP_Text>().text = opinions3_1[2];
+                        opinion_3.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-1-", 3));
+                        opinion_3.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_4.GetComponent<TMP_Text>().text = opinions3_1[3];
+                        opinion_4.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-1-", 4));
+                        opinion_4.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_5.GetComponent<TMP_Text>().text = opinions3_1[4];
+                        opinion_5.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-1-", 5));
+                        opinion_5.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_6.GetComponent<TMP_Text>().text = opinions3_1[5];
+                        opinion_6.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-1-", 6));
+                        opinion_6.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_7.GetComponent<TMP_Text>().text = opinions3_1[6];
+                        opinion_7.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-1-", 7));
+                        opinion_7.GetComponent<OpinionObject>().opinionSide = -1;
+                        opinion_8.GetComponent<TMP_Text>().text = opinions3_1[7];
+                        opinion_8.GetComponent<AudioSource>().clip = Resources.Load<AudioClip>(AudioSourcePath("Level3-1-", 8));
+                        opinion_8.GetComponent<OpinionObject>().opinionSide = -1;
 
                         // change lighting
                         r = 0.5f;
@@ -211,27 +391,17 @@ public class GameFlow : MonoBehaviour
                 lightFirst.color = new Color(r, g, b);
                 lightSecond.color = new Color(r, g, b);
                 lightThird.color = new Color(r, g, b);
+                lightForth.color = new Color(r, g, b);
+                lightFifth.color = new Color(r, g, b);
             }
             else if (currentLevel > 3) {
                 // Transit to the Data Screen
             }
         }
     }
-}
 
-public class Opinions
-{
-    public Opinions_module level1_3 { get; set; }
-    public Opinions_module level2_4 { get; set; }
-    public Opinions_module level2_2 { get; set; }
-    public Opinions_module level3_5 { get; set; }
-    public Opinions_module level3_3 { get; set; }
-    public Opinions_module level3_1 { get; set; }
-
-    public class Opinions_module
+    private string AudioSourcePath(string level, int index)
     {
-        public string title { get; set; }
-        public Dictionary<string, string> lighting { get; set; }
-        public string[] opinions { get; set; }
+        return level + index;
     }
 }
